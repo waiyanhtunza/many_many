@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/',[CourseController::class,'index'])->name('course.list');
+
+
+
+Route::get('/register',[StudentController::class,'register'])->name('register');
+Route::post('/',[StudentController::class,'postRegister'])->name('auth.store');
